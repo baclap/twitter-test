@@ -1,14 +1,23 @@
-'use strict'
-
-import React, { Component } from 'react'
+import React from 'react'
+import App from './components/App'
 import { render } from 'react-dom'
+import { bindActionCreators } from 'redux'
+import { connect, Provider } from 'react-redux'
+import * as actions from './actions'
+import store from './store'
 
-class App extends Component {
-    render() {
-        return (
-            <h1>hello world from react</h1>
-        )
-    }
-}
+const AppContainer = connect(
+  (state) => {
+      return state.toJS()
+  },
+  (dispatch) => {
+      return { actions: bindActionCreators(actions, dispatch) }
+  }
+)(App)
 
-render(<App />, document.querySelector('#app'))
+render(
+    <Provider store={store}>
+        <AppContainer />
+    </Provider>,
+    document.querySelector('#app')
+)
