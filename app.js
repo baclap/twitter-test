@@ -6,6 +6,10 @@ const env = require('node-env-file')
 
 env('./.env')
 
+function staticDir() {
+	return process.env.NODE_ENV === 'production' ? './public' : './dev-public'
+}
+
 router.get('/tweets/:username', function *(next) {
 	const response = yield request({
         url: 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=' + this.params.username,
@@ -18,7 +22,7 @@ router.get('/tweets/:username', function *(next) {
 })
 
 const app = koa()
-app.use(serve('./public'))
+app.use(serve(staticDir()))
 app.use(router.routes())
 app.use(router.allowedMethods())
 
