@@ -4,7 +4,11 @@ const router = require('koa-router')()
 const request = require('koa-request')
 const env = require('node-env-file')
 
-env('./.env')
+try {
+	env('./.env')
+} catch (e) {
+	console.log('Error calling env.', e)
+}
 
 function staticDir() {
 	return process.env.NODE_ENV === 'production' ? './public' : './dev-public'
