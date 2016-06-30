@@ -1,15 +1,18 @@
 import React, { Component, PropTypes } from 'react'
-import { render } from 'react-dom'
+import Form from './Form'
+import Results from './Results'
 
 export default class App extends Component {
     render() {
-        const { actions, val } = this.props
         return (
-            <button onClick={() => actions.increment(val)}>{val}</button>
+            <div>
+                <Form />
+                <Results />
+            </div>
         )
     }
 }
 App.propTypes = {
-    val: PropTypes.number.isRequired,
+    //
     actions: PropTypes.object.isRequired,
 }

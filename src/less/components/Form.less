@@ -1,0 +1,34 @@
+.Form {
+    font-size: 18px;
+    text-align: center;
+
+    &__input {
+        width: 100%;
+        background: @white;
+        color: @black;
+        padding: 15px 30px;
+        outline: none;
+        border: 0;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        font-size: inherit;
+        text-align: inherit;
+
+        &::placeholder {
+            color: @grey;
+        }
+    }
+
+    &__button {
+        display: block;
+        width: 100%;
+        background: @blue;
+        color: @white;
+        padding: 15px 30px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+}
