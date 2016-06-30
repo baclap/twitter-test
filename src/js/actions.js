@@ -1,11 +1,19 @@
 import { createAction } from 'redux-actions'
-import { UPDATE_INPUT_VAL, REQUEST_TWEETS, RECEIVE_TWEETS } from './constants'
+import {
+    UPDATE_INPUT_VAL,
+    REQUEST_TWEETS,
+    RECEIVE_TWEETS,
+    RECEIVE_TWEETS_ERROR,
+    REMOVE_ERROR,
+} from './constants'
 import normalizeUsername from './util/normalizeUsername'
 import { check200Status, parseJSON } from './util/fetch-helpers'
 
 export const updateInputVal = createAction(UPDATE_INPUT_VAL, val => val)
 const requestTweets = createAction(REQUEST_TWEETS)
 const receiveTweets = createAction(RECEIVE_TWEETS, tweets => tweets)
+const receiveTweetsError = createAction(RECEIVE_TWEETS_ERROR)
+export const removeError = createAction(REMOVE_ERROR)
 
 export function fetchTweets(username) {
     username = normalizeUsername(username)
@@ -21,7 +29,7 @@ export function fetchTweets(username) {
             dispatch(receiveTweets(tweets))
         })
         .catch((error) => {
-            console.error('fetchTweets failed', error)
+            dispatch(receiveTweetsError())
         })
     }
 }

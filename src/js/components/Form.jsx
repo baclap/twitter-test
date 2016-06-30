@@ -8,6 +8,11 @@ export default class Form extends Component {
     handleInputChange(e) {
         this.props.updateInputVal(e.target.value)
     }
+    handleInputKeyUp(e) {
+        if (e.keyCode === 13 && !this.props.buttonIsDisabled) {
+            this.props.fetchTweets(this.props.inputVal)
+        }
+    }
     handleButtonClick() {
         this.props.fetchTweets(this.props.inputVal)
     }
@@ -23,6 +28,7 @@ export default class Form extends Component {
                     type="text"
                     placeholder="@username"
                     onChange={::this.handleInputChange}
+                    onKeyUp={::this.handleInputKeyUp}
                     value={inputVal}
                     disabled={inputIsDisabled}
                     {...classes('input', {
