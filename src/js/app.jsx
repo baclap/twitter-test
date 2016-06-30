@@ -1,3 +1,7 @@
+// polyfill
+require('es6-promise').polyfill()
+require('whatwg-fetch')
+
 import React from 'react'
 import App from './components/App'
 import { render } from 'react-dom'

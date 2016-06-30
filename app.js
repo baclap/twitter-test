@@ -12,7 +12,7 @@ function staticDir() {
 
 router.get('/tweets/:username', function *(next) {
 	const response = yield request({
-        url: 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=' + this.params.username,
+        url: 'https://api.twitter.com/1.1/statuses/user_timeline.json?count=25&screen_name=' + this.params.username,
         headers: { 'Authorization': 'Bearer ' + process.env.TWITTER_BEARER_TOKEN }
 	})
     if (response.statusCode !== 200) {

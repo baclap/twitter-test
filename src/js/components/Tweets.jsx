@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import BEMHelper from 'react-bem-helper'
 
-const BLOCK_CLASS = 'Results'
+const BLOCK_CLASS = 'Tweets'
 const classes = new BEMHelper(BLOCK_CLASS)
 
-export default class Results extends Component {
+export default class Tweets extends Component {
     content() {
         // loading or cards or nothing...
     }
@@ -16,5 +16,7 @@ export default class Results extends Component {
         )
     }
 }
-Results.propTypes = {
+Tweets.propTypes = {
+    tweetsAreLoading: PropTypes.bool.isRequired,
+    tweets: PropTypes.array.isRequired,
 }
