@@ -4,7 +4,8 @@ const router = require('koa-router')()
 const request = require('koa-request')
 const env = require('node-env-file')
 
-// in production we don't have a .env file so we'll try and move on
+// production app on Heroku has no .env file, so we'll try and move on if we
+// encounter an error as it's likely just that we're running in production
 try {
 	env('./.env')
 } catch (e) {
