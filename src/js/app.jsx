@@ -7,12 +7,12 @@ import * as actions from './actions'
 import store from './store'
 
 const AppContainer = connect(
-  (state) => {
-      return state.toJS()
-  },
-  (dispatch) => {
-      return { actions: bindActionCreators(actions, dispatch) }
-  }
+    (state) => {
+        return state.toJS()
+    },
+    (dispatch) => {
+        return { actions: bindActionCreators(actions, dispatch) }
+    }
 )(App)
 
 render(

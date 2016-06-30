@@ -1,6 +1,3 @@
-export function increment(amount) {
-    return {
-        type: 'increment',
-        amount
-    }
-}
+import { createAction } from 'redux-actions'
+
+export const increment = createAction('INCREMENT', amount => amount)
